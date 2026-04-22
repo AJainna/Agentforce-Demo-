@@ -74,6 +74,49 @@
         .card h3 { margin-bottom: 15px; font-size: 20px; }
         .card p { color: #6b7280; font-size: 15px; line-height: 1.6; }
 
+        /* FAQ */
+        .faq-section {
+            padding: 60px 40px;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .faq-section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .faq {
+            max-width: 800px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 15px 20px;
+            background: #f1f5f9;
+            border: none;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 15px 20px;
+            background: white;
+            color: #4b5563;
+            font-size: 14px;
+        }
+
         .cta {
             text-align: center;
             padding: 60px 20px;
@@ -90,11 +133,6 @@
             color: #1e3a8a;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .cta button:hover {
-            background: #e0e7ff;
         }
 
         footer {
@@ -105,7 +143,7 @@
             font-size: 14px;
         }
 
-        /* Chatbot Widget */
+        /* Chatbot */
         .chatbot-button {
             position: fixed;
             bottom: 20px;
@@ -118,7 +156,6 @@
             height: 60px;
             font-size: 26px;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .chatbot-box {
@@ -138,13 +175,10 @@
             color: white;
             padding: 15px;
             border-radius: 15px 15px 0 0;
-            font-weight: 600;
         }
 
         .chatbot-body {
             padding: 15px;
-            font-size: 14px;
-            color: #4b5563;
         }
 
     </style>
@@ -153,70 +187,76 @@
 
 <header>
     <div class="logo">
-        <img src="https://via.placeholder.com/150x45?text=PLC+Logo" alt="PLC Logo">
+        <img src="https://via.placeholder.com/150x45?text=PLC+Logo">
         <h1>PLC Lifecycle Solutions</h1>
     </div>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Solutions</a>
-        <a href="#">Industries</a>
-        <a href="#">Contact</a>
-    </nav>
 </header>
 
 <section class="hero">
     <h2>End-to-End Product Lifecycle Management</h2>
-    <p>Empowering manufacturing and engineering enterprises with digital transformation, automation, and intelligent lifecycle management solutions.</p>
+    <p>Empowering enterprises with digital transformation and AI-driven lifecycle solutions.</p>
 </section>
 
 <section class="cards-section">
     <div class="cards">
-        <div class="card"><h3>Product Design & Engineering</h3><p>Collaborative design environment with CAD integration and engineering change management.</p></div>
-        <div class="card"><h3>Manufacturing Process Management</h3><p>Optimize workflows and ensure traceability across global manufacturing plants.</p></div>
-        <div class="card"><h3>Quality & Compliance</h3><p>Integrated quality control and regulatory compliance monitoring.</p></div>
-        <div class="card"><h3>Service Lifecycle Management</h3><p>Predictive maintenance and connected asset management.</p></div>
-        <div class="card"><h3>Data & Analytics</h3><p>Lifecycle dashboards and advanced reporting insights.</p></div>
-        <div class="card"><h3>Cloud & AI Integration</h3><p>AI-powered insights to reduce time-to-market.</p></div>
+        <div class="card"><h3>Product Design</h3><p>Collaborative engineering tools.</p></div>
+        <div class="card"><h3>Manufacturing</h3><p>Optimize workflows.</p></div>
+        <div class="card"><h3>Quality</h3><p>Ensure compliance.</p></div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+
+        <div class="faq-item"><button class="faq-question">What is PLM?</button><div class="faq-answer">PLM manages product lifecycle end-to-end.</div></div>
+        <div class="faq-item"><button class="faq-question">How does PLC help?</button><div class="faq-answer">Improves efficiency and reduces cost.</div></div>
+        <div class="faq-item"><button class="faq-question">Integration support?</button><div class="faq-answer">Yes with ERP & CRM.</div></div>
+        <div class="faq-item"><button class="faq-question">Industries?</button><div class="faq-answer">Manufacturing, healthcare, etc.</div></div>
+        <div class="faq-item"><button class="faq-question">Cloud ready?</button><div class="faq-answer">Yes fully cloud enabled.</div></div>
+        <div class="faq-item"><button class="faq-question">AI usage?</button><div class="faq-answer">Predictive insights & automation.</div></div>
+        <div class="faq-item"><button class="faq-question">Security?</button><div class="faq-answer">Enterprise-grade security.</div></div>
+        <div class="faq-item"><button class="faq-question">Time-to-market?</button><div class="faq-answer">Faster product delivery.</div></div>
+        <div class="faq-item"><button class="faq-question">Agentforce?</button><div class="faq-answer">AI assistant integration.</div></div>
+        <div class="faq-item"><button class="faq-question">Demo?</button><div class="faq-answer">Click request demo button.</div></div>
+
     </div>
 </section>
 
 <section class="cta">
     <h2>Transform Your Product Lifecycle Today</h2>
-    <p>Schedule a demo to see how PLC Lifecycle Solutions can optimize your operations.</p>
     <button>Request Demo</button>
 </section>
 
 <footer>
-    © 2026 PLC Lifecycle Solutions. All rights reserved.
+    © 2026 PLC Lifecycle Solutions
 </footer>
 
-<!-- Chatbot Widget Placeholder -->
 <button class="chatbot-button" onclick="toggleChat()">💬</button>
+
 <div class="chatbot-box" id="chatbox">
-    <div class="chatbot-header">PLC Virtual Assistant</div>
-    <div class="chatbot-body">
-        This is a chatbot placeholder.<br><br>
-        👉 You can embed your Agentforce or Salesforce Chat snippet here.
-    </div>
+    <div class="chatbot-header">PLC Assistant</div>
+    <div class="chatbot-body">Chatbot Placeholder</div>
 </div>
 
 <script>
-    function toggleChat() {
-        const box = document.getElementById('chatbox');
-        box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
-    }
+function toggleChat() {
+    const box = document.getElementById('chatbox');
+    box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+}
 
-    const cards = document.querySelectorAll('.card');
-    window.addEventListener('scroll', () => {
-        cards.forEach(card => {
-            const rect = card.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 50) {
-                card.classList.add('visible');
-            }
+// FAQ toggle
+document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+        const ans = q.nextElementSibling;
+        document.querySelectorAll('.faq-answer').forEach(a => {
+            if (a !== ans) a.style.display = 'none';
         });
+        ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
     });
+});
 </script>
-
 
 </body>
 </html>
