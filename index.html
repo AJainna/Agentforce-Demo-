@@ -162,23 +162,43 @@
             <br> 👉 You can embed your Agentforce or Salesforce Chat snippet here. </div>
     </div>
     <script>
-        function toggleChat() { const box = document.getElementById('chatbox'); box.style.display = box.style.display === 'flex' ? 'none' : 'flex'; } const cards = document.querySelectorAll('.card'); window.addEventListener('scroll', () => { cards.forEach(card => { const rect = card.getBoundingClientRect(); if (rect.top < window.innerHeight - 50) { card.classList.add('visible'); } }); });
-   const faqQuestions = document.querySelectorAll('.faq-question');
+function toggleChat() {
+    const box = document.getElementById('chatbox');
+    box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+}
+
+// ===== CARD ANIMATION FIX =====
+const cards = document.querySelectorAll('.card');
+
+function revealCards() {
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+            card.classList.add('visible');
+        }
+    });
+}
+
+// Run on page load + scroll
+window.addEventListener('load', revealCards);
+window.addEventListener('scroll', revealCards);
+
+
+// ===== FAQ TOGGLE =====
+const faqQuestions = document.querySelectorAll('.faq-question');
 
 faqQuestions.forEach(q => {
     q.addEventListener('click', () => {
         const answer = q.nextElementSibling;
 
-        // Close all others
         document.querySelectorAll('.faq-answer').forEach(a => {
             if (a !== answer) a.style.display = 'none';
         });
 
-        // Toggle current
         answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
     });
 });
-    </script>
+</script>
 </body>
 
 </html>
