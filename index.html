@@ -56,7 +56,7 @@
 <body>
     <header>
         <div class="logo"> <img src="https://via.placeholder.com/150x45?text=PLC+Logo" alt="PLC Logo">
-            <h1>PLC Lifecycle Solutions 103</h1> </div>
+            <h1>PLC Lifecycle Solutions 100</h1> </div>
         <nav> <a href="#">Home</a> <a href="#">Solutions</a> <a href="#">Industries</a> <a href="#">Contact</a> </nav>
     </header>
     <section class="hero">
@@ -173,12 +173,22 @@
 	};
 </script>
 <script type='text/javascript' src='https://ma1772715308949.my.site.com/ESWPLCChannel1777268262678/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script>
+const cards = document.querySelectorAll('.card');
 
+function revealCards() {
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+            card.classList.add('visible');
+        }
+    });
+}
 
-// Run on page load + scroll
+// Run on load + scroll
 window.addEventListener('load', revealCards);
 window.addEventListener('scroll', revealCards);
-
+</script>
 
 
     
