@@ -4,301 +4,592 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/png" href="assets/maantic.jpg">
+
+    <!-- TAB ICON -->
+    <link rel="icon" type="image/png" href="assets/maantic.jpg">
+
     <title>PLC Product Lifecycle Management</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; } body { background-color: #2DC5B9; color: #2DC5B9; overflow-x: hidden; } header { background: linear-gradient(90deg, #0B245A, #0B245A); color: white; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; animation: slideDown 1s ease; } @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } } .logo { display: flex; align-items: center; gap: 12px; } .logo img { height: 45px; } .logo h1 { font-size: 22px; font-weight: 600; } nav a { color: white; text-decoration: none; margin-left: 25px; font-weight: 500; } .hero { padding: 100px 20px; text-align: center; background: white; animation: fadeIn 2s ease; } @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } .hero h2 { font-size: 42px; margin-bottom: 20px; } .hero p { font-size: 18px; color: #4b5563; max-width: 700px; margin: auto; } .cards-section { padding: 60px 40px; } .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; } .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: transform 0.4s ease, box-shadow 0.4s ease; opacity: 0; transform: translateY(40px); } .card.visible { opacity: 1; transform: translateY(0); } .card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); } .card h3 { margin-bottom: 15px; font-size: 20px; } .card p { color: #6b7280; font-size: 15px; line-height: 1.6; } .cta { text-align: center; padding: 60px 20px; background: #1e3a8a; color: white; } .cta button { margin-top: 20px; padding: 12px 28px; border: none; border-radius: 8px; background: white; color: #1e3a8a; font-weight: 600; cursor: pointer; transition: 0.3s ease; } .cta button:hover { background: #e0e7ff; } footer { text-align: center; padding: 25px; background: #0f172a; color: #cbd5e1; font-size: 14px; } /* Chatbot Widget */ .chatbot-button { position: fixed; bottom: 20px; right: 20px; background: #1e3a8a; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 26px; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.2); } .chatbot-box { position: fixed; bottom: 90px; right: 20px; width: 300px; background: white; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); display: none; flex-direction: column; } .chatbot-header { background: #1e3a8a; color: white; padding: 15px; border-radius: 15px 15px 0 0; font-weight: 600; } .chatbot-body { padding: 15px; font-size: 14px; color: #4b5563; }
-      .faq-section {
-    padding: 60px 40px;
-    background: #2DC5B9;
-    text-align: center;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-.faq-section h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.faq {
-    max-width: 800px;
-    margin: auto;
-    text-align: left;
-}
+        body {
+            background: #2DC5B9;
+            color: #0B245A;
+            overflow-x: hidden;
+        }
 
-.faq-item {
-    margin-bottom: 15px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
+        /* HEADER */
 
-.faq-question {
-    width: 100%;
-    padding: 15px 20px;
-    background: #f1f5f9;
-    border: none;
-    text-align: left;
-    font-weight: 600;
-    cursor: pointer;
-}
+        header {
+            background: #3C248E;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 1s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.faq-answer {
-    display: none;
-    padding: 15px 20px;
-    background: white;
-    color: #4b5563;
-    font-size: 14px;
-}
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo img {
+            height: 50px;
+            border-radius: 10px;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* NAVBAR */
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #2DC5B9;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #2DC5B9;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 120px 20px 80px;
+            text-align: center;
+            background: #2DC5B9;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero h2 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            color: #3C248E;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 750px;
+            margin: auto;
+            color: #083344;
+            line-height: 1.8;
+        }
+
+        /* SECTION TITLE */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #3C248E;
+        }
+
+        /* CARDS */
+
+        .cards-section {
+            padding: 80px 40px;
+            background: #2DC5B9;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #7EE7DF;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.4s ease;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: #3C248E;
+        }
+
+        .card p {
+            color: #334155;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* FAQ */
+
+        .faq-section {
+            padding: 80px 40px;
+            background: #2DC5B9;
+            text-align: center;
+        }
+
+        .faq-section h2 {
+            font-size: 38px;
+            margin-bottom: 40px;
+            color: #3C248E;
+        }
+
+        .faq {
+            max-width: 900px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            margin-bottom: 18px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #7EE7DF;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px;
+            background: #7EE7DF;
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            color: #3C248E;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #a5f3fc;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 20px;
+            background: #dffcf8;
+            color: #334155;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        /* CTA */
+
+        .cta {
+            text-align: center;
+            padding: 80px 20px;
+            background: #2DC5B9;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            color: #3C248E;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #083344;
+            font-size: 18px;
+        }
+
+        .cta button {
+            margin-top: 30px;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 10px;
+            background: #3C248E;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .cta button:hover {
+            background: #0B245A;
+            transform: translateY(-3px);
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #3C248E;
+            color: #dbeafe;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px) {
+
+            header {
+                padding: 18px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 10px;
+            }
+
+            .hero h2 {
+                font-size: 38px;
+            }
+
+            .cards-section,
+            .faq-section {
+                padding: 60px 20px;
+            }
+
+            .cta h2 {
+                font-size: 32px;
+            }
+        }
     </style>
-  
 </head>
 
 <body>
+
+    <!-- HEADER -->
+
     <header>
-        <div class="logo"> <img src="assets/maantic logo.jpg" alt="PLC Logo">
-            <h1>PLC Lifecycle Solutions</h1> </div>
-        <nav> <a href="#">Home</a> <a href="#">Solutions</a> <a href="#">Industries</a> <a href="#">Contact</a> </nav>
+
+        <div class="logo">
+            <img src="assets/maantic logo.jpg" alt="PLC Logo">
+            <h1>PLC Lifecycle Solutions</h1>
+        </div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Solutions</a>
+            <a href="#">Industries</a>
+            <a href="#">Contact</a>
+        </nav>
+
     </header>
+
+    <!-- HERO -->
+
     <section class="hero">
+
         <h2>End-to-End Product Lifecycle Management</h2>
-        <p>Empowering manufacturing and engineering enterprises with digital transformation, automation, and intelligent lifecycle management solutions.</p>
+
+        <p>
+            Empowering manufacturing and engineering enterprises with digital
+            transformation, automation, and intelligent lifecycle management
+            solutions.
+        </p>
+
     </section>
+
+    <!-- CARDS -->
+
     <section class="cards-section">
+
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+
         <div class="cards">
+
             <div class="card">
                 <h3>Product Design & Engineering</h3>
-                <p>Collaborative design environment with CAD integration and engineering change management.</p>
+                <p>
+                    Collaborative design environment with CAD integration and engineering
+                    change management.
+                </p>
             </div>
+
             <div class="card">
                 <h3>Manufacturing Process Management</h3>
-                <p>Optimize workflows and ensure traceability across global manufacturing plants.</p>
+                <p>
+                    Optimize workflows and ensure traceability across global manufacturing plants.
+                </p>
             </div>
+
             <div class="card">
                 <h3>Quality & Compliance</h3>
-                <p>Integrated quality control and regulatory compliance monitoring.</p>
+                <p>
+                    Integrated quality control and regulatory compliance monitoring.
+                </p>
             </div>
+
             <div class="card">
                 <h3>Service Lifecycle Management</h3>
-                <p>Predictive maintenance and connected asset management.</p>
+                <p>
+                    Predictive maintenance and connected asset management.
+                </p>
             </div>
+
             <div class="card">
                 <h3>Data & Analytics</h3>
-                <p>Lifecycle dashboards and advanced reporting insights.</p>
+                <p>
+                    Lifecycle dashboards and advanced reporting insights.
+                </p>
             </div>
+
             <div class="card">
                 <h3>Cloud & AI Integration</h3>
-                <p>AI-powered insights to reduce time-to-market.</p>
+                <p>
+                    AI-powered insights to reduce time-to-market.
+                </p>
             </div>
+
         </div>
+
     </section>
-  <section class="faq-section">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq">
 
-        
-		
+    <!-- FAQ -->
 
-		<div class="faq-item">
-    <button class="faq-question">1) What is PLC Subscribe?</button>
-    <div class="faq-answer">
-        It's a car Subscription service. With PLC Subscribe, you can opt for any of the PLC cars available in the Subscription portfolio. Choose from a flexible tenure and pay only a fixed all-inclusive monthly fee. This fee includes the cost of car usage, maintenance, insurance, and service.
-    </div>
-</div>
+    <section class="faq-section">
 
-<div class="faq-item">
-    <button class="faq-question">2) Which cities is PLC Subscribe available in?</button>
-    <div class="faq-answer">
-        Ayvens (White plate subscription) - Chandigarh, Ludhiana, Nagpur, Vishakhapatnam, Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, Bengaluru, Hyderabad, Pune, Mumbai, Navi Mumbai, Thane, Chennai, Ahmedabad, Gandhinagar, Jaipur, Indore, Mangalore, Mysore, Kochi & Kolkata.<br><br>
+        <h2>Frequently Asked Questions</h2>
 
-        Myles (Black Plate Subscription) - Bengaluru, Hyderabad, Pune, Mumbai, Navi Mumbai, Thane, Mangalore, Mysore.<br><br>
+        <div class="faq">
 
-        Orix (White plate subscription) - Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, Bengaluru, Hyderabad, Pune, Mumbai, Navi Mumbai, Thane, Chennai, Ahmedabad, Gandhinagar, Jaipur, Indore.<br><br>
+            <div class="faq-item">
+                <button class="faq-question">
+                    1) What is PLC Subscribe?
+                </button>
 
-        Orix (Black Plate Subscription) - Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, Bengaluru, Hyderabad, Pune, Mumbai, Navi Mumbai, Thane, Jaipur.<br><br>
+                <div class="faq-answer">
+                    It's a car Subscription service. With PLC Subscribe, you can opt for any of the PLC cars available in the Subscription portfolio.
+                </div>
+            </div>
 
-        Quiklyz (White Plate Subscription) - Chandigarh, Ludhiana, Lucknow, Nagpur, Vishakhapatnam, Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, Bengaluru, Hyderabad, Pune, Mumbai, Navi Mumbai, Thane, Chennai, Ahmedabad, Gandhinagar, Jaipur, Indore, Mangalore, Mysore, Kochi & Kolkata.
-    </div>
-</div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    2) Which cities is PLC Subscribe available in?
+                </button>
 
-<div class="faq-item">
-    <button class="faq-question">3) Am I eligible for PLC Subscribe?</button>
-    <div class="faq-answer">
-        • Be a resident of India<br>
-        • Be 21 years old or above<br>
-        • Own a Valid Driver's License<br>
-        • Have a Credit score of 650 and above
-    </div>
-</div>
+                <div class="faq-answer">
+                    PLC Subscribe is available across multiple cities including Bengaluru,
+                    Pune, Mumbai, Hyderabad, Delhi NCR, Chennai, Ahmedabad and more.
+                </div>
+            </div>
 
-<div class="faq-item">
-    <button class="faq-question">4) How complicated is the Subscription process?</button>
-    <div class="faq-answer">
-        It's surprisingly easy. Visit the nearest PLC Arena or Nexa dealer, choose a car and suitable subscription tenure, submit documents online for credit approval, pay and enjoy driving your own car.
-    </div>
-</div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    3) Am I eligible for PLC Subscribe?
+                </button>
 
-<div class="faq-item">
-    <button class="faq-question">5) How are the operations managed post sales?</button>
-    <div class="faq-answer">
-        Post sales operations are handled by the subscription partner for collection of monthly payments, service, maintenance, and roadside assistance through MSIL authorized dealers only.
-    </div>
-</div>
+                <div class="faq-answer">
+                    You must be 21+ years old with a valid driving license and
+                    a minimum credit score of 650.
+                </div>
+            </div>
 
-<div class="faq-item">
-    <button class="faq-question">6) Which car models are available for Subscription?</button>
-    <div class="faq-answer">
-        • PLC Swift<br>
-        • PLC Dzire<br>
-        • PLC Baleno<br>
-        • PLC Brezza<br>
-        • PLC Ciaz<br>
-        • PLC XL6<br>
-        • PLC Ertiga<br>
-        • PLC WagonR<br>
-        • PLC Ignis<br>
-        • PLC Celerio<br>
-        • PLC Grand Vitara
-    </div>
-</div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    4) Are maintenance charges included?
+                </button>
 
-<div class="faq-item">
-    <button class="faq-question">7) Are the available cars new?</button>
-    <div class="faq-answer">
-        All cars available with PLC Subscribe are brand new.
-    </div>
-</div>
+                <div class="faq-answer">
+                    Yes. Insurance, maintenance and service are included in the monthly subscription fee.
+                </div>
+            </div>
 
-<div class="faq-item">
-    <button class="faq-question">8) Can I select the colour of my car?</button>
-    <div class="faq-answer">
-        PLC Subscribe offers multiple colour options to choose from.
-    </div>
-</div>
-
-<div class="faq-item">
-    <button class="faq-question">9) Do I need to be GST registered?</button>
-    <div class="faq-answer">
-        GST registration is NOT necessary in order to subscribe to a car.
-    </div>
-</div>
-
-<div class="faq-item">
-    <button class="faq-question">10) Are there any restrictions to where I can travel?</button>
-    <div class="faq-answer">
-        You can drive within Indian geographical limits.
-    </div>
-</div>
-
-<div class="faq-item">
-    <button class="faq-question">11) Can I use the car for rideshare services?</button>
-    <div class="faq-answer">
-        No, the car cannot be used for any commercial purposes.
-    </div>
-</div>
-
-<div class="faq-item">
-    <button class="faq-question">12) Can I carry my pet in the car?</button>
-    <div class="faq-answer">
-        No, you are not allowed to ferry pets or any type of animals in the car.
-    </div>
-</div>
-
-<div class="faq-item">
-    <button class="faq-question">13) Are there any restrictions on the number of passengers?</button>
-    <div class="faq-answer">
-        Please comply with the manufacturer-prescribed seating capacity of the car.
-    </div>
-</div>
-
-<div class="faq-item">
-    <button class="faq-question">14) Can I make modifications or alterations to the car?</button>
-    <div class="faq-answer">
-        No, you cannot make modifications or alterations to the car. However, detachable accessories that do not affect the car warranty are allowed.
-    </div>
-</div>
-
-<div class="faq-item">
-    <button class="faq-question">15) What are the documents required?</button>
-    <div class="faq-answer">
-        <strong>Salaried:</strong> Application form, PAN Card, Aadhaar Card, Address Proof, Photograph, Salary Slips, Bank Statements, ITR/Form 16, Bank Verification, Bonus Letter, GST documents.<br><br>
-
-        <strong>Self Employed Professional:</strong> Application form, PAN Card, Aadhaar Card, Address Proof, Photograph, Registration Certificate, Bank Statements, ITR & Balance Sheet, Bank Verification, GST documents.<br><br>
-
-        <strong>Proprietorship Firm:</strong> Application form, PAN + TAN, Address Proof, CIBIL Letter, Audited Financials, Bank Statements, ITR, Bank Verification, Promoter KYC, GST documents.<br><br>
-
-        <strong>Private/Public Limited/Partnership Firm:</strong> Application form, PAN + TAN, MOA/AOA/COI/Partnership Deed, Address Proof, CIBIL Letter, Audited Financials, Bank Statements, ITR, Bank Verification, Promoter KYC, GST documents.
-    </div>
-</div>
-		<div class="faq-item">
-            <button class="faq-question">16) How can I see my account and login details?</button>
-            <div class="faq-answer">You can login with you registered email id.</div>
         </div>
 
-    </div>
-</section>
+    </section>
+
+    <!-- CTA -->
+
     <section class="cta">
+
         <h2>Transform Your Product Lifecycle Today</h2>
-        <p>Schedule a demo to see how PLC Lifecycle Solutions can optimize your operations.</p>
+
+        <p>
+            Schedule a demo to see how PLC Lifecycle Solutions can optimize your operations.
+        </p>
+
         <button>Request Demo</button>
+
     </section>
-    <footer> © 2026 PLC Lifecycle Solutions. All rights reserved. </footer>
-   
-	<script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-			embeddedservice_bootstrap.init(
-				'00DHu00000ytMhV',
-				'PLC_Channel',
-				'https://ma1772715308949.my.site.com/ESWPLCChannel1777268262678',
-				{
-					scrt2URL: 'https://ma1772715308949.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<script type='text/javascript' src='https://ma1772715308949.my.site.com/ESWPLCChannel1777268262678/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-<script>
-const cards = document.querySelectorAll('.card');
+    <!-- FOOTER -->
 
-function revealCards() {
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 50) {
-            card.classList.add('visible');
+    <footer>
+        © 2026 PLC Lifecycle Solutions. All rights reserved.
+    </footer>
+
+    <!-- SALESFORCE CHATBOT -->
+
+    <script type='text/javascript'>
+
+        function initEmbeddedMessaging() {
+
+            try {
+
+                embeddedservice_bootstrap.settings.language = 'en_US';
+
+                embeddedservice_bootstrap.init(
+                    '00DHu00000ytMhV',
+                    'PLC_Channel',
+                    'https://ma1772715308949.my.site.com/ESWPLCChannel1777268262678',
+                    {
+                        scrt2URL: 'https://ma1772715308949.my.salesforce-scrt.com'
+                    }
+                );
+
+            } catch (err) {
+
+                console.error('Error loading Embedded Messaging: ', err);
+
+            }
+        };
+
+    </script>
+
+    <script type='text/javascript'
+        src='https://ma1772715308949.my.site.com/ESWPLCChannel1777268262678/assets/js/bootstrap.min.js'
+        onload='initEmbeddedMessaging()'>
+        </script>
+
+    <!-- CARD ANIMATION -->
+
+    <script>
+
+        const cards = document.querySelectorAll('.card');
+
+        function revealCards() {
+
+            cards.forEach(card => {
+
+                const rect = card.getBoundingClientRect();
+
+                if (rect.top < window.innerHeight - 50) {
+
+                    card.classList.add('visible');
+
+                }
+
+            });
+
         }
-    });
-}
 
-// Run on load + scroll
-window.addEventListener('load', revealCards);
-window.addEventListener('scroll', revealCards);
-	</script>
-	<script>
-// FAQ TOGGLE
-const faqQuestions = document.querySelectorAll('.faq-question');
+        window.addEventListener('load', revealCards);
+        window.addEventListener('scroll', revealCards);
 
-faqQuestions.forEach(q => {
-    q.addEventListener('click', () => {
-        const answer = q.nextElementSibling;
+    </script>
 
-        document.querySelectorAll('.faq-answer').forEach(a => {
-            if (a !== answer) a.style.display = 'none';
+    <!-- FAQ TOGGLE -->
+
+    <script>
+
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(q => {
+
+            q.addEventListener('click', () => {
+
+                const answer = q.nextElementSibling;
+
+                document.querySelectorAll('.faq-answer').forEach(a => {
+
+                    if (a !== answer) {
+
+                        a.style.display = 'none';
+
+                    }
+
+                });
+
+                answer.style.display =
+                    answer.style.display === 'block'
+                        ? 'none'
+                        : 'block';
+
+            });
+
         });
 
-        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-    });
-});
+    </script>
 
-</script>
-
-
-    
 </body>
 
 </html>
